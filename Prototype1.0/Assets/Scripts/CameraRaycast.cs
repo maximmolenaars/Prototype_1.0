@@ -17,6 +17,22 @@ public class CameraRaycast : MonoBehaviour
     [SerializeField]
     private AudioSource slideMovement;
 
+    //Crosscheck
+    [SerializeField]
+    private GameObject crossCheckUI;
+    [SerializeField]
+    private GameObject thumbsUp;
+    [SerializeField]
+    private GameObject thumbsDown;
+    [SerializeField]
+    private GameObject ribbon_crossCheck;
+    [SerializeField]
+    private GameObject SlidesOtherDoor;
+    [SerializeField]
+    private GameObject SlidesOtherDoorArmed;
+
+
+
 
     public float rayLength;
     public LayerMask layermask;
@@ -25,6 +41,8 @@ public class CameraRaycast : MonoBehaviour
     {
         crossCheckRibbon.SetActive(false);
         label1.SetActive(false);
+        crossCheckUI.SetActive(false);
+        ribbon_crossCheck.SetActive(false);
     }
 
 
@@ -51,12 +69,26 @@ public class CameraRaycast : MonoBehaviour
                     MoveTheSlides();
                 }
 
+                if (hit.collider.gameObject == thumbsDown)
+                {
+                    thumbsDownRoutine();
+                }
+
+                if (hit.collider.gameObject == thumbsUp)
+                {
+                    thumbsUpRoutine();
+                }
+
             }
 
          }
 
 
     }
+
+
+
+    //ARMING SLIDES
 
     private void MoveTheSlides()
     {
@@ -66,11 +98,50 @@ public class CameraRaycast : MonoBehaviour
         slidesStatic.SetActive(true);
         label1.SetActive(false);
         crossCheckRibbon.SetActive(true);
+        CrossCheck();
     }
+
 
     private void ArmTheSlides()
     {
         label1.SetActive(true);
+    }
+
+
+    //CROSSCHECK
+
+    private void CrossCheck()
+    {
+        crossCheckUI.SetActive(true);
+
+    }
+
+    private void thumbsDownRoutine()
+    {
+        thumbsUp.SetActive(false);
+        CrossCheckRoutine();
+
+    }
+
+    private void thumbsUpRoutine()
+    {
+        thumbsDown.SetActive(false);
+        CabinCrewTakeYourSeats();
+
+    }
+
+    private void CrossCheckRoutine()
+    {
+        ribbon_crossCheck.SetActive(true);
+        Destroy(SlidesOtherDoor);
+        SlidesOtherDoorArmed.SetActive(true);
+        slideMovement.Play();
+        CabinCrewTakeYourSeats();
+    }
+
+    private void CabinCrewTakeYourSeats()
+    {
+        Debug.Log("Cabin Crew Take Your Seats");
     }
 }
 

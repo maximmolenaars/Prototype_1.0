@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class ButtonHandler : MonoBehaviour {
 
 	// Use this for initialization
-	public void ChangeScene () {
+	public void ChangeScene () 
+    {
         SceneManager.LoadScene("ArmSlidesSequence");
 	}
-	
-	
+
+   	
 }
