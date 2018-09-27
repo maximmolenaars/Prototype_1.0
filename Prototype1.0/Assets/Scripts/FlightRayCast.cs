@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class FlightRayCast : MonoBehaviour
 {
@@ -36,6 +37,11 @@ public class FlightRayCast : MonoBehaviour
         if (timeLeft > 20 && timeLeft < 20.05)
         {
             PhoneRing();
+        }
+
+        if (timeLeft > 40 && timeLeft < 40.1)
+        {
+            SceneManager.LoadScene("FlightNoCallCrash");
         }
 
         if (Input.GetMouseButtonDown(0) && !EventSystem.current.IsPointerOverGameObject())

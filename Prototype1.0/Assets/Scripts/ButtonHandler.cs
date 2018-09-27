@@ -11,5 +11,10 @@ public class ButtonHandler : MonoBehaviour {
         SceneManager.LoadScene("ArmSlidesSequence");
 	}
 
+    public void ChangeSceneToFlightArmed()
+    {
+        SceneManager.LoadScene("FlightArmed");
+    }
+
    	
 }
