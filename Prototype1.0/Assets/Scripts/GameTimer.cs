@@ -4,23 +4,17 @@ using UnityEngine;
 
 public class GameTimer : MonoBehaviour
 {
-    
-    public float timeLeft = 0.0f;
 
-    public AudioSource source;
+    public float timeLeft = 0.0f;
 
 
     void Update()
     {
         timeLeft += Time.deltaTime;
-        if (timeLeft > 30 && timeLeft < 30.1)
+        if (timeLeft > 60 && timeLeft < 60.1)
         {
-            PhoneRing();
+            Debug.Log("next scene");
         }
     }
-
-    private void PhoneRing()
-    {
-        source.Play();
-    }
 }
+
